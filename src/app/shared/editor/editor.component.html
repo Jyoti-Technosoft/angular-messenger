@@ -1,0 +1,17 @@
+<div *ngIf="groupName; else elseBlock">
+    <form [formGroup]="groupName" *ngIf="groupName">
+        <quill-editor class="content-editor" [placeholder]="''" [modules]="quillConfiguration"  
+            [styles]="{'min-height': '120px'}" [formControlName]="controlName" (onContentChanged)="textChanged($event)">
+        </quill-editor>  
+    </form>
+</div>
+
+<ng-template #elseBlock>
+    <div class="editor-inline">
+        <quill-editor class="content-editor adjust-height span" [ngClass]="!isDetailView ? 'hide-image-content set-height': 'details-view'" 
+            [placeholder]="''"  [modules]="quillConfiguration"  [styles]="{  'border':'none' }" 
+        [ngModel]="value" [readOnly]="true"> 
+    </quill-editor>  
+
+    </div>
+</ng-template>

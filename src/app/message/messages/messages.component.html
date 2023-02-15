@@ -1,0 +1,21 @@
+
+
+<div class="add-button">
+  <div>
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Jhone Doe, Message " #input>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-mini-fab class="mx-2" (click)="deleteMessage()" *ngIf="this.selectedItemlist.length > 0" matTooltip="Delete selected Messages">
+      <mat-icon>delete</mat-icon>
+    </button>
+
+    <button mat-mini-fab (click)="openDialog()" class="mx-2" matTooltip="Compose new message">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+</div>

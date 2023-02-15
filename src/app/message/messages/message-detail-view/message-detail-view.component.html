@@ -1,0 +1,33 @@
+<div class="p-3">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div class="justify-content-space-between align-item-center">
+        <div class="diplay-flex-row">
+          <div mat-card-avatar class="example-header-image">
+            {{ this.selectedMessage?.name | shortName }}
+          </div>
+          <mat-card-title>{{ this.selectedMessage?.name }}</mat-card-title>
+        </div>
+        <div>
+          <mat-card-subtitle>{{
+            (this.selectedMessage?.name | shortName) + "@yahoo.com"
+          }}</mat-card-subtitle>
+        </div>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <app-editor
+        [value]="selectedMessage?.message"
+        [isDetailView]="true"
+      ></app-editor>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-button (click)="deleteMessage()">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <button mat-button (click)="goBackToPrevPage()">
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

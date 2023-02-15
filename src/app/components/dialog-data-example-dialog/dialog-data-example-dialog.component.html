@@ -1,0 +1,29 @@
+<div class="display-flex-row">
+  <div>
+    <h1 class="dialog-header" mat-dialog-title>{{ this.data.message ? "Edit Your Message" : "Compose New Message" }}</h1>
+  </div>
+  <div>
+    <button mat-icon-button class="close-button" [mat-dialog-close]="true" (click)="resetForm()">
+      <mat-icon class="close-icon" color="primary">close</mat-icon>
+    </button>
+  </div>
+</div>
+
+<div mat-dialog-content>
+  <form [formGroup]="messageForm" (ngSubmit)="submitMessageData()">
+    <mat-form-field class="mb-4" appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name"  [maxlength]="25"/>
+      <mat-error *ngIf="name?.invalid && (name?.dirty || name?.touched)">{{getErrorMessage('name')}}</mat-error>
+    </mat-form-field>
+
+    <app-editor [controlName]="'message'" [groupName]="messageForm"></app-editor>
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-flat-button [mat-dialog-close]="true" class="cancel-button" cdkFocusInitial>Cancel</button>
+  <button mat-flat-button mat-dialog-close type="button" color="primary" 
+    [disabled]="messageForm.invalid" (click)="submitMessageData()"> {{ this.data.message ? "Update" : "Submit" }}
+  </button>
+</div>
